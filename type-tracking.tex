@@ -1,0 +1,71 @@
+\documentclass{eceasst}
+% This is an empty ECEASST article that can be used as a template
+% by authors.
+% Just uncomment the appropriate frontmatter commands and provide
+% the parameters.
+
+% Required packages
+% =================
+% Your \usepackage commands go here.
+
+% Volume frontmatter
+% ==================
+%\input{frontmatter}
+
+% Article frontmatter
+% ===================
+\volume{X}{2014}
+\volumetitle{Proceedings of the\\Automated Verification of Critical Systems\\(AVoCS 2013)} % Title of the article
+\guesteds{Helen Treharne, Steve Schneider}
+\title{Physical Type Tracking through Minimal Source-Code Annotation} % Title of the article
+%\short{} % Short title of the article (optional)
+\author{% Authors and references to addresses
+Dave Donaghy\autref{1} and
+Tom Crick\autref{2}}
+\institute{% Institutes with labels
+\autlabel{1} \email{dave.donaghy@hp.com}\\
+HP Bristol, UK\par
+\autlabel{2} \email{tcrick@cardiffmet.ac.uk}\\
+Department of Computing\\
+Cardiff Metropolitan University, UK}
+\abstract{% Abstract of the article
+One of many common artefacts of complex software systems that often needs to be tracked through
+the entirety of the software system is the underlying type to which numerical variables refer.
+
+Commonly-used languages used in business provide complex mechanisms through which general objects
+are associated to a given type: for example, the \begin{em}class\end{em} (and \begin{em}template\end{em})
+mechanisms in Python (and C++) are extremely rich mechanisms for the construction of types with 
+almost entirely aribtrary associated operation sets.
+
+However, one often deals with software objects that ultimately represent numerical entities corresponding
+to real-world measurements, even through very standardised SI units: metres per second, kilogram metres
+per second-squared, etc.  In such situations, one can be left with insufficient and ineffective
+type-checking: for example, the C \begin{em}double\end{em} type will not precent the erroneous addition
+of values representing speed (with SI units \begin{em}metre per second\end{em}) to values
+representing mass (SI unit \begin{em}kilogram\end{em}).
+
+We present an addition to the C language, defined through the existing \begin{em}attribute\end{em}
+mechanism, that allows automatic control of physical types at compile-time; the only requirement is
+that individual variables be identified at declaration time with appropriate SI (or similar) units.
+}
+\keywords{compiler, plug-in, verification} % Keywords for the article
+
+\begin{document}
+\maketitle
+
+% Main part of your article
+% =========================
+%\section{Introduction}
+
+
+% Acknowledgements for colleagues, referees, ...
+% ==============================================
+%\begin{acknowledge}
+%\end{acknowledge}
+
+% Bibliography with BibTeX
+% ========================
+%\bibliographystyle{eceasst}
+%\bibliography{}
+
+\end{document}
