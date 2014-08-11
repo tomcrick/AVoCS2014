@@ -56,7 +56,89 @@ meaningful information about the value of a proposed new early intervention tech
 
 % Main part of your article
 % =========================
-%\section{Introduction}
+\section{Introduction}
+
+It is possible for software developers to construct all manner of tools
+that will analyse practially any aspect of their source code and report
+on it in any way they choose; while this freedom will allow arbitrary
+invention on the part of the software developer, it might also allow
+construction of analysis tools that \begin{em}seem\end{em} effective,
+but in reality are not; additionally, individual developers might have
+different ideas of what constitutes an effective tool.
+
+It would be useful, therefore, to formalize two separate ideas:
+
+\begin{enumerate}
+\item What constitutes effectiveness in the realm of compilation tools?
+\item Is my tool effective?
+\end{enumerate}
+
+\section{Robust Efficacy Measurement}
+
+Some notions of tool effectiveness during code development and compilation
+might be as follows:
+
+\begin{enumerate}
+\item Will my tool make my code better?
+\item Since the beginning of my current project, how many errors would
+have been detected using my tool, which was not in use (or in fact
+conceived at the time?
+\end{enumerate}
+
+Clearly these two criteria have been written deliberately to highlight
+the difference between objective, measurable criteria and subjective,
+hard-to-measure ones.
+
+We will phrase (and suggest ways for answering) the following question:
+
+\begin{quote}
+How can we phrase objective questions about measuring the effectiveness
+of tools run at the time of software compilation.
+
+\end{quote}
+
+\section{Retrospective Measurements}
+
+We often have access to massive amounts of historical data in the form
+of a source-code repository such as those used by Subversion or Git
+(among many other tools used for such purposes).
+
+Often, though, while these repositories provide the ability to take
+time-based snapshots of workspaces that "work" (in some loose sense) at
+a given point in time, we may not take full advantage of the information
+in them.
+
+Imagine that we have access to a new compiler option that will allow
+us to simply prevent compilation of code where a certain kind of error
+is detected.
+
+Assuming we have access to full historical information in our source-code
+repository, we can simply re-run our compile-test cycle with te new
+tool in place, and see whih errors would have been identified before
+their actual detection time.  Again, with full historical information,
+we can identify \begin{em}ho much earlier\end{em} each would have been
+identified, and then make judgments about the benefits of the newtool.
+
+The remaining question, then, is this: if we \begin{em}do not\end{em} have
+full historical information (and it is likely that we do not), then how
+much information do we need to judge the efficacy of our new techniques?
+
+\section{Open Questions}
+
+The following questions may be answered by suitable experiments with
+access to historical repositories:
+
+\begin{enumerate}
+\item What build system changes are necessary to allow the retrospective
+addition of compiler tools to the build cycle?
+
+\item What artefacts must be stored in a repository in order to reproduce
+compile-build test cycles and identify all errors?
+
+\item How often must snapshots be taken in order to identify the points
+in time where errors were identified and fixed?
+
+\end{enumerate}
 
 
 % Acknowledgements for colleagues, referees, ...
