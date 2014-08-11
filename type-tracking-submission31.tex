@@ -1,0 +1,161 @@
+\documentclass{eceasst}
+% This is an empty ECEASST article that can be used as a template
+% by authors.
+% Just uncomment the appropriate frontmatter commands and provide
+% the parameters.
+
+% Required packages
+% =================
+% Your \usepackage commands go here.
+
+% Volume frontmatter
+% ==================
+%\input{frontmatter}
+
+% Volume frontmatter for AVoCS 2014
+% =====================================
+\volume{XXX}{2014} % Volume number and year
+\volumetitle{% Title of the volume (optional)
+Proceedings of the\\
+14th International Workshop on\\
+Automated Verification of Critical Systems
+(AVoCS 2014)}
+\volumeshort{% Short title of the volume (optional)
+Proc.\ AVoCS 2014}
+\guesteds{% Multiple guest editors
+Marieke Huisman, Jaco van de Pol}
+\title{Physical Type Tracking through Minimal Source-Code Annotation} % Title of the article
+%\short{} % Short title of the article (optional)
+\author{% Authors and references to addresses
+Dave Donaghy\autref{1} and
+Tom Crick\autref{2}}
+\institute{% Institutes with labels
+\autlabel{1} \email{dave.donaghy@hp.com}\\
+HP Bristol, UK\par
+\autlabel{2} \email{tcrick@cardiffmet.ac.uk}\\
+Department of Computing\\
+Cardiff Metropolitan University, UK}
+\abstract{% Abstract of the article
+One of many common artefacts of complex software systems that often
+needs to be tracked through the entirety of the software system is the
+underlying type to which numerical variables refer. Commonly-used
+languages used in industry provide complex mechanisms through which
+general objects are associated to a given type: for example,
+the \begin{em}class\end{em} (and \begin{em}template\end{em})
+mechanisms in Python (and C++) are extremely rich mechanisms for the
+construction of types with almost entirely arbitrary associated
+operation sets.
+
+However, one often deals with software objects that ultimately
+represent numerical entities corresponding to real-world measurements,
+even through standardised SI units: metres per second, kilogram metres
+per second-squared, etc.  In such situations, one can be left with
+insufficient and ineffective type-checking: for example, the
+C \begin{em}double\end{em} type will not prevent the erroneous
+addition of values representing velocity (with SI units
+\begin{em}metre per second\end{em}) to values representing mass (SI
+unit \begin{em}kilogram\end{em}).
+
+We present an addition to the C language, defined through the existing
+\begin{tt}attribute\end{tt} mechanism, that allows automatic control
+of physical types at compile-time; the only requirement is that
+individual variables be identified at declaration time with
+appropriate SI (or similar) units.
+
+}
+\keywords{Compilers, Plug-ins, Type-checking, Verification} % Keywords for the article
+
+\begin{document}
+\maketitle
+
+% Main part of your article
+% =========================
+\section{Introduction}
+Large (and indeed small) software systems typically track data, stored
+in a variety of different types; in fact, ``bytes in, bytes out'' is a
+fairly accurate description of a massive portion of the functionality
+of large software systems. While this is clearly true, it is of course
+an extraordinary over-simplification: the nature of the data we track
+through software systems ultimately maps all of the data that
+humankind has, can, or ever will, encompass.
+
+It is not much of an understatement to say that tracking the types and
+content of these data represents the whole job of software development.
+Indeed, whole paradigms (for example, object-oriented development)
+may be thought of as addressing this one significant issue. However,
+such paradigms, while rich and functional, can also be cumbersome.
+
+\section{Simple Techniques for Data Tracking}
+
+In certain scenarios, the nature of the data we track may make it amenable
+to simpler representation: from a mathematical point of view, while a C++
+class representing a command-line instruction to be parsed and executed
+\begin{em}is not\end{em} a mathematical object in any useful sense;
+whereas a C++ object representing the distance from a geographical point
+to another most assuredly is.
+
+Nevertheless, it is common to either use the same complex,
+powerful techniques to track these mathematical objects as to track
+non-mathematical ones; or indeed not to effectively track them at
+all. To contrast that idea, it might be possible to track these fundamentally
+mathematical items in C-like languages in ways that allow minimal
+additional effort at development time, and no maintenance effort at all.
+
+For example, there is no meaningful way in which one can (or should)
+add 10 metres to 20 kilograms; there \begin{em}is\end{em}, however, a
+way in which we can multiply the two: the result has a value of 200,
+and a unit of ``kilogram metre'' (one has to
+understand \begin{em}slightly\end{em} more physics that the authors to
+recall the precise physical meaning of a unit of ``kilogram metre'',
+but one certainly exists).
+
+\section{Implicit Type Operation and Restricted Types}
+
+Imagine, then, that a variable declaration can be tagged with
+a \begin{em}unit\end{em}; that two variables can be arbitrarily
+multiplied; that two variables can be added if and only if their
+underlying \begin{em}units\end{em} match exactly. With these abilities
+in place, we could simply manipulate all physical types (kilograms,
+metres, farads etc) as built-in numerical types, without resorting to
+the complex \begin{em}class\end{em} mechanisms that we might otherwise
+need.
+
+We might call such a declaration a \begin{em}restricted type\end{em}:
+being based on a built-in type (or indeed, any arbitrary type) it is
+then further restricted by constraining the operations allowed on it:
+no additional software is written to define the type, and the only
+distinction between it and the type from which it is defined is this:
+that with the new type, either the software compiled and behaves
+identically, or it does not compile at all. While similar features
+exist for certain programming paradigms (for example, functional
+e.g. Haskell), there are significant opportunities for their
+implementation in the languages commonly used for industrial software
+development.
+
+
+\section{Open Questions}
+
+We can ask the following questions to frame future work in this area:
+
+\begin{enumerate}
+
+\item Which existing definitions of complex types (for example, C++
+classes) can be replaced with restricted types?
+
+\item By how much might software development effort be reduced using such techniques?
+
+\item How much more effective might such techniques be at detecting software errors?
+
+\end{enumerate}
+
+% Acknowledgements for colleagues, referees, ...
+% ==============================================
+%\begin{acknowledge}
+%\end{acknowledge}
+
+% Bibliography with BibTeX
+% ========================
+%\bibliographystyle{eceasst}
+%\bibliography{}
+
+\end{document}
