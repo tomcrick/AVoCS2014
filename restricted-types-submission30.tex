@@ -36,19 +36,23 @@ HP Bristol, UK\par
 Department of Computing\\
 Cardiff Metropolitan University, UK}
 \abstract{% Abstract of the article
-Object-oriented programming (OOP) languages allow for rich creation of new types through, for example,
-the \begin{em}class\end{em} mechanism found in C++ and Python (among others).
+Object-oriented programming (OOP) languages allow for the creation of
+rich new types through, for example, the \begin{tt}class\end{tt}
+mechanism found in C++ and Python (among others).
 
-These techniques, while certainly rich in the functionality they provide, addtionally require users
-to develop and test new types; while resulting software can be elegant and easy to understand (and
-indeed those are some of the hopes behind the OOP paradigm), there is a cost associated to the addition
-of the new code required to implement such new types. Such a cost will typically be at least linear
-in the number of new types introduced.
+These techniques, while certainly rich in the functionality they
+provide, additionally require users to develop and test new types;
+while resulting software can be elegant and easy to understand (and
+indeed these were some of the aspirations behind the OOP paradigm),
+there is a cost associated to the addition of the new code required to
+implement such new types. Such a cost will typically be at least
+linear in the number of new types introduced.
 
-One potential alternative to the creation of new types through \begin{em}extension\end{em} is the
-creation of new types through \begin{em}restriction\end{em}; in appropriate circumstances, such
-types can provide the same elegance and ease of understanding, but without a corresponding linear
-development and maintenance cost.
+One potential alternative to the creation of new types through
+\begin{em}extension\end{em} is the creation of new types through
+\begin{em}restriction\end{em}; in appropriate circumstances, such types
+can provide the same elegance and ease of understanding, but without a
+corresponding linear development and maintenance cost.
 }
 \keywords{Compilers, Plug-ins, Verification, Restricted Types} % Keywords for the article
 
@@ -57,7 +61,74 @@ development and maintenance cost.
 
 % Main part of your article
 % =========================
-%\section{Introduction}
+\section{Introduction}
+
+Object-oriented programming (OOP) languages allow for the creation of
+rich new types through, for example, the \begin{tt}class\end{tt}
+mechanism found in C++ and Python. However, it might be possible to
+obtain some of the gains of such techniques without the associated
+overheads in cost.
+
+\section{Development Cost of New Types}
+
+In an object-oriented development environment, it can reasonably be
+said that \begin{em}all\end{em} software is encapsulated as methods on various
+types; indeed, Java, for example, requires that all executable code be
+written as type methods, allowing for the notion that
+\begin{tt}static\end{tt} methods are still a kind of type method.
+
+At the very least, then, the development of new types has
+\begin{em}some\end{em} cost (and in particular, some financial or
+resource cost) associated to it.  While we do not intend to directly
+measure this cost, a fair starting assumption might be that is linear
+in the number of new types introduced.
+
+\section{Restricted Types}
+One potential alternative to the creation of new types through
+\begin{em}extension\end{em} is the creation of new types through
+\begin{em}restriction\end{em}; in appropriate circumstances, such types
+can provide the same elegance and ease of understanding, but without a
+corresponding linear development and maintenance cost.
+
+As an example, consider an integer counter, intended to represent the
+number of occurrences of a certain event: the operations one might like to have
+on such an entity can be described as follows:
+
+\begin{enumerate}
+\item Create a new counter, with a value of zero.
+\item Increment the counter by one.
+\item Compare the value of the counter against a given integer.
+\end{enumerate}
+
+Note that we might want to describe such operations
+\begin{em}explicitly\end{em}, with the assumption that all other
+operations (for example, multiplying the counter by 8, or setting bits 2,
+3 and 7), are disallowed.
+
+One could clearly create such an object simply (and elegantly) in C++
+or Java using a class construct, but the point here is that
+creation of such a new type would involve new, deployable, testable
+software with a non-trivial associated cost; a counter such as this is,
+mathematically and naturally speaking, a special kind of integer, and
+therefore we already have all the required software (built into the 
+hardware and run-time environment) that we need. In particular, what
+we \begin{em}really\end{em} need is a constraint: we must promise not
+to use disallowed ``non-counter'' operations on counters.
+
+\section{Open Questions}
+
+We can ask the following questions to frame future work in this area:
+
+\begin{enumerate}
+\item What existing common (or indeed uncommon) types naturally present
+themselves as \begin{em}restrictions\end{em} of existing types, either
+built-in/primitive types or other existing types?
+\item What amount of software is involved in the definition of those types?
+\item (Harder) What financial cost has historically been involved in
+the creation and maintenance of those types?
+\item What proportion of that cost might be saved by new techniques for
+developing restricted types?
+\end{enumerate}
 
 
 % Acknowledgements for colleagues, referees, ...
