@@ -6,7 +6,9 @@ all: $(targets)
 
 pdflatex = pdflatex -interaction=errorstopmode -halt-on-error
 
-%.pdf: %.tex
+%.pdf: %.tex avocs.bib
+	$(pdflatex) $<
+	bibtex $*
 	$(pdflatex) $<
 	$(pdflatex) $<
 
