@@ -62,7 +62,8 @@ an existing historical record of a development, and extract from it
 meaningful information about the value of a proposed new early
 intervention technique.
 }
-\keywords{Compilers Verification, Efficiency} % Keywords for the article
+\keywords{Software Engineering, Verification, Efficiency, Mining, Version Control
+Systems} % Keywords for the article
 
 \begin{document}
 \maketitle
@@ -77,8 +78,9 @@ report on it in any way they choose; while this freedom will allow
 arbitrary invention on the part of the software developer, it might
 also allow construction of analysis tools that \begin{em}seem\end{em}
 effective, but in reality are not; additionally, individual developers
-might have different ideas of what constitutes an effective tool. It
-would be useful, therefore, to formalize two separate ideas:
+might have different ideas of what constitutes an effective
+tool~\cite{zaidman-et-al:2008}. It would be useful, therefore, to formalise two
+separate ideas:
 
 \begin{enumerate}
 \item What constitutes effectiveness in the realm of compilation tools?
@@ -107,22 +109,24 @@ compilation?}}
 \section{Retrospective Measurements}
 
 We often have access to massive amounts of historical data in the form
-of a source-code repository such as those used by Subversion or Git
-(among many other tools used for such purposes). Often, though, while
-these repositories provide the ability to take time-based snapshots of
-workspaces that ``work'' (in some loose sense) at a given point in
-time, we may not take full advantage of the information in
-them. 
+of a source-code
+repository~\cite{ball-et-al:1997,zimmermann-et-al:2005}, such as those
+used by Subversion or Git (among many other tools used for such
+purposes). Often, though, while these repositories provide the ability
+to take time-based snapshots of workspaces that ``work'' (in some
+loose sense) at a given point in time, we may not take full advantage
+of the information in them~\cite{bird-et-al:2009,sisman+kak:2012}.
 
 Imagine that we have access to a new compiler option that will allow
 us to simply prevent compilation of code where a certain kind of error
 is detected. Assuming we have access to full historical information in
-our source-code repository, we can simply re-run our compile-test
-cycle with the new tool in place, and see which errors would have been
-identified before their actual detection time.  Again, with full
-historical information, we can identify \begin{em}how much
-earlier\end{em} each would have been identified, and then make
-judgments about the benefits of the new tool.
+our source-code repository, perhaps from repository mining, we can
+simply re-run our compile-test cycle with the new tool in place, and
+see which errors would have been identified before their actual
+detection time.  Again, with full historical information, we can
+identify \begin{em}how much earlier\end{em} each would have been
+identified, and then make judgments about the benefits of the new
+tool.
 
 The remaining question, then, is this: if we \begin{em}do not\end{em} have
 full historical information (and it is likely that we do not), then how
@@ -143,6 +147,9 @@ compile-build test cycles and identify all errors?
 \item How often must snapshots be taken in order to identify the points
 in time where errors were identified and fixed?
 
+\item What is the potential for false alarms raised by error-checking
+  tools in this proposed system?
+
 \end{enumerate}
 
 
@@ -153,7 +160,7 @@ in time where errors were identified and fixed?
 
 % Bibliography with BibTeX
 % ========================
-%\bibliographystyle{eceasst}
-%\bibliography{}
+\bibliographystyle{eceasst}
+\bibliography{avocs}
 
 \end{document}
