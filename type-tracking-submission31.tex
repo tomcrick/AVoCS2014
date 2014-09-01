@@ -63,7 +63,7 @@ individual variables be identified at declaration time with
 appropriate SI (or similar) units.
 
 }
-\keywords{Compilers, Plug-ins, Type-checking, Verification} % Keywords for the article
+\keywords{Verification, Software Engineering, Type-Checking, Units, Compilers, Plug-ins} % Keywords for the article
 
 \begin{document}
 \maketitle
@@ -102,12 +102,18 @@ mathematical items in C-like languages in ways that allow minimal
 additional effort at development time, and no maintenance effort at all.
 
 For example, there is no meaningful way in which one can (or should)
-add 10 metres to 20 kilograms; there \begin{em}is\end{em}, however, a
-way in which we can multiply the two: the result has a value of 200,
-and a unit of ``kilogram metre'' (one has to
-understand \begin{em}slightly\end{em} more physics that the authors to
-recall the precise physical meaning of a unit of ``kilogram metre'',
-but one certainly exists).
+add 10 metres to 20 kilograms ~\cite{foster:2013};
+there \begin{em}is\end{em}, however, a way in which we can multiply
+the two: the result has a value of 200, and a unit of ``kilogram
+metre'' (one has to understand \begin{em}slightly\end{em} more physics
+that the authors to recall the precise physical meaning of a unit of
+``kilogram metre'', but one certainly
+exists)~\cite{siunits}. Units-of-measure are to science what types are
+to programming; over the years, a number of attempts have been
+suggested to extend programming languages with support for static
+checking of
+units-of-measure~\cite{kennedy:1997,erwig+burnett:2002,kennedy:2009},
+alongside bespoke languages (e.g. Frink~\cite{frink}).
 
 \section{Implicit Type Operation and Restricted Types}
 
@@ -126,11 +132,13 @@ then further restricted by constraining the operations allowed on it:
 no additional software is written to define the type, and the only
 distinction between it and the type from which it is defined is this:
 that with the new type, either the software compiled and behaves
-identically, or it does not compile at all. While similar features
-exist for certain programming paradigms (for example, functional
-e.g. Haskell), there are significant opportunities for their
-implementation in the languages commonly used for industrial software
-development.
+identically, or it does not compile at
+all~\cite{donaghy+crick:2014}. While similar features exist for
+certain programming paradigms (for example, functional e.g. Haskell),
+there are significant opportunities for their implementation in the
+languages commonly used for industrial software development. Such a
+feature could improve the code quality for critical systems, as well
+as detecting errors earlier, lowering software development costs.
 
 
 \section{Open Questions}
@@ -155,7 +163,7 @@ classes) can be replaced with restricted types?
 
 % Bibliography with BibTeX
 % ========================
-%\bibliographystyle{eceasst}
-%\bibliography{}
+\bibliographystyle{eceasst}
+\bibliography{avocs}
 
 \end{document}
