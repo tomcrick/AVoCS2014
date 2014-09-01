@@ -54,7 +54,7 @@ One potential alternative to the creation of new types through
 can provide the same elegance and ease of understanding, but without a
 corresponding linear development and maintenance cost.
 }
-\keywords{Compilers, Plug-ins, Verification, Restricted Types} % Keywords for the article
+\keywords{Verification, Restricted Types, Compilers, Plug-ins} % Keywords for the article
 
 \begin{document}
 \maketitle
@@ -72,10 +72,10 @@ overheads in cost.
 \section{Development Cost of New Types}
 
 In an object-oriented development environment, it can reasonably be
-said that \begin{em}all\end{em} software is encapsulated as methods on various
-types; indeed, Java, for example, requires that all executable code be
-written as type methods, allowing for the notion that
-\begin{tt}static\end{tt} methods are still a kind of type method.
+said that \begin{em}all\end{em} software is encapsulated as methods on
+various types; indeed, Java, for example, requires that all executable
+code be written as type methods, allowing for the notion that static
+methods are still a kind of type method.
 
 At the very least, then, the development of new types has
 \begin{em}some\end{em} cost (and in particular, some financial or
@@ -86,9 +86,10 @@ in the number of new types introduced.
 \section{Restricted Types}
 One potential alternative to the creation of new types through
 \begin{em}extension\end{em} is the creation of new types through
-\begin{em}restriction\end{em}; in appropriate circumstances, such types
-can provide the same elegance and ease of understanding, but without a
-corresponding linear development and maintenance cost.
+\begin{em}restriction\end{em}~\cite{nystrom-et-al:2008}; in
+appropriate circumstances, such types can provide the same elegance
+and ease of understanding, but without a corresponding linear
+development and maintenance cost.
 
 As an example, consider an integer counter, intended to represent the
 number of occurrences of a certain event: the operations one might like to have
@@ -120,14 +121,18 @@ to use disallowed ``non-counter'' operations on counters.
 We can ask the following questions to frame future work in this area:
 
 \begin{enumerate}
-\item What existing common (or indeed uncommon) types naturally present
-themselves as \begin{em}restrictions\end{em} of existing types, either
-built-in/primitive types or other existing types?
-\item What amount of software is involved in the definition of those types?
+\item What existing common (or indeed uncommon) types naturally
+present themselves as \begin{em}restrictions\end{em} of existing
+types, either built-in/primitive types or other existing types?
+\item What amount of software is involved in the definition of those
+types, for example appropriate compiler/toolchain support?
+(e.g.~\cite{andreae-et-al:2006,nystrom+saraswat:2007,markstrum-et-al:2010,gccplugins,clangplugins})
+\item How can we ensure that these restrictions, especially as
+compiler plugins, are harmless?~\cite{nystrom:2011}
 \item (Harder) What financial cost has historically been involved in
 the creation and maintenance of those types?
-\item What proportion of that cost might be saved by new techniques for
-developing restricted types?
+\item What proportion of that cost might be saved by new techniques
+for developing restricted types?
 \end{enumerate}
 
 
@@ -138,7 +143,7 @@ developing restricted types?
 
 % Bibliography with BibTeX
 % ========================
-%\bibliographystyle{eceasst}
-%\bibliography{}
+\bibliographystyle{eceasst}
+\bibliography{avocs}
 
 \end{document}
